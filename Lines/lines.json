@@ -1,0 +1,121 @@
+{
+  "start": [
+    {
+      "type": "CirLoading",
+      "duration": 8,
+      "label": "识别远程服务器中..."
+    },
+    {
+      "type": "CPrint",
+      "text": "<lgreen>识别成功!</lgreen>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CirLoading",
+      "duration": 10,
+      "label": "构建安全通道中..."
+    },
+    {
+      "type": "CPrint",
+      "text": "<lgreen>安全通道构建成功</lgreen>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CirLoading",
+      "duration": 10,
+      "label": "服务器正在评估连接安全性..."
+    },
+    {
+      "type": "CPrint",
+      "text": "<lgreen>安全性评估通过 启用等级: NEOPHYTE</lgreen>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CPrint",
+      "text": "<lyellow>已被授予临时身份: DEFAULT</lyellow>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CirLoading",
+      "duration": 15,
+      "label": "等待服务器响应..."
+    },
+    {
+      "type": "CPrint",
+      "text": "<lgreen>接收到服务器消息: 0xEFFACE124</lgreen>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "LineLoading",
+      "header": "客户端驱动 KRYPD_201 下载中: ",
+      "total": 150,
+      "filled": "*",
+      "empty": "·",
+      "styletype": 31,
+      "length": 50,
+      "delayMs": 8
+    },
+    {
+      "type": "CPrint",
+      "text": "<lgreen>驱动 KRYPD_201 下载成功</lgreen>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CirLoading",
+      "duration": 10,
+      "label": "临时连接申请中..."
+    },
+    {
+      "type": "CPrint",
+      "text": "<lgreen>临时连接申请通过</lgreen>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CirLoading",
+      "duration": 15,
+      "label": "连接到 156.81.26.143"
+    },
+    {
+      "type": "CPrint",
+      "text": "<lgreen>连接到 156.81.26.143 成功</lgreen>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CPrint",
+      "text": "<lgreen>登录到 156.81.26.143 用户名: DEFAULT</lgreen>\n",
+      "delay": 0,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CPrint",
+      "text": "<lred>检测到本机IP 137.123.83.81 不在白名单中！\n[请输入六位数字口令进行验证]</lred>\n",
+      "delay": 4,
+      "speaker": "",
+      "hid": 1
+    },
+    {
+      "type": "CPrint",
+      "text": "<lred>---- [ 登录受限 ] ----</lred>\n",
+      "delay": 4,
+      "speaker": "",
+      "hid": 1
+    }
+  ]
+}
