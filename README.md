@@ -25,7 +25,7 @@
 target_include_directories(C3 PRIVATE third_party)
 ```
 
-Obfuscate 上游地址：<https://github.com/adamyaxley/Obfuscate>（Unlicense，可自由使用与再分发）。该原版定义了 `OBF(...)` 宏，可直接用于 `Secret.h`，无需改成 `AY_OBFUSCATE`。
+Obfuscate 上游地址：<https://github.com/adamyaxley/Obfuscate>（Unlicense，可自由使用与再分发）。该原版为`AY_OBFUSCATE`宏，我将其更名为了 `OBF(...)` ，可直接用于 `Secret.h`。
 
 ## 构建与运行
 
