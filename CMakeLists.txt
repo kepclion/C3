@@ -15,6 +15,15 @@ add_executable(C3 main.cpp
         AniUtils.cpp
 )
 
+
+if(MSVC)
+    target_compile_options(C3 PRIVATE /utf-8)
+endif()
+
+if(MINGW OR CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_link_options(C3 PRIVATE -static-libgcc -static-libstdc++)
+endif()
+
 target_include_directories(C3 PRIVATE third_party)
 
 if(MINGW)
@@ -36,5 +45,3 @@ if(MINGW)
     )
 endif()
 
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++")
-target_link_libraries(C3 PRIVATE -static-libgcc -static-libstdc++)
