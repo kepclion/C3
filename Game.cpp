@@ -3,6 +3,10 @@
 #include "ConsoleUtils.h"
 #include "Story.h"
 #include "Game.h"
+
+#include <map>
+#include <ranges>
+
 #include "SaveData.h"
 #include "Secret.h"
 #include "Lines/Line.h"
@@ -54,7 +58,6 @@ void SurfaceShow(const GameSurface surface, SaveData& saves)
 
         case EXIT:
             exit(0);
-            break;
 
         case GameCheatTaskSurface:
             GameCheatTaskDetails();
@@ -773,7 +776,6 @@ void GameMenuStart(SaveData& saves)
             break;
         case 1:
             prelude_intro_refuse();
-            break;
         default: break;
     }
 }

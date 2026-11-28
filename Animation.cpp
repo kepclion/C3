@@ -89,9 +89,9 @@ void LineLoading(const char* header, const ull total,
     HideCursor();
     for (ull step = 0; step <= total; ++step)
     {
-        const double progress = static_cast<double>(step) / total;
+        const double progress = static_cast<double>(step) / static_cast<double>(total);
         const double t        = lerp(type, progress);
-        ull filledCount       = static_cast<ull>(t * length);
+        ull filledCount       = static_cast<ull>(t * static_cast<double>(length));
         if (filledCount > length) filledCount = length;
 
         printf("\r%s ", header);
@@ -630,7 +630,7 @@ namespace
             if (key != 224) continue;
 
             const int arrow = _getch();
-            int dir         = 0;
+            int dir;
             switch (arrow)
             {
                 case 72:

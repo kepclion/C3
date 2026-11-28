@@ -55,7 +55,6 @@ void InitializeStory()
         t.CPrint();
         _getch();
         exit(-1);
-        return;
     }
 
     json lines;

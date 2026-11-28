@@ -20,6 +20,7 @@ target_include_directories(C3 PRIVATE third_party)
 if(MINGW)
     get_filename_component(MINGW_BIN_DIR "${CMAKE_C_COMPILER}" DIRECTORY)
 
+
     set(MINGW_RUNTIME_DLLS
             "${MINGW_BIN_DIR}/libwinpthread-1.dll"
             "${MINGW_BIN_DIR}/libgcc_s_seh-1.dll"

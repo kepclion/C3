@@ -1,5 +1,4 @@
 #include "allheader.h"
-#include "Story.h"
 #include "ConsoleUtils.h"
 #include <unordered_map>
 
@@ -105,8 +104,8 @@ bool AlignBufferToWindow()
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     if (!GetConsoleScreenBufferInfo(hConsole, &csbi)) return false;
 
-    const SHORT winW = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-    const SHORT winH = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+    const auto winW = static_cast<SHORT>(csbi.srWindow.Right - csbi.srWindow.Left + 1);
+    const auto winH = static_cast<SHORT>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
 
     // 已经对齐：缓冲区 == 窗口，且窗口从顶部开始
     if (csbi.dwSize.X == winW && csbi.dwSize.Y == winH && csbi.srWindow.Top == 0)

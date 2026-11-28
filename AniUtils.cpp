@@ -40,12 +40,27 @@ size_t DisplayWidth(std::string_view s)
             }
         }
 
-        const auto c = static_cast<unsigned char>(s[i]);
-        if (c < 0x80)                 { w += 1; i += 1; }
-        else if ((c & 0xE0) == 0xC0) { w += 1; i += 2; }
-        else if ((c & 0xF0) == 0xE0) { w += 2; i += 3; }
-        else if ((c & 0xF8) == 0xF0) { w += 2; i += 4; }
-        else                         { w += 1; i += 1; }
+        if (const auto c = static_cast<unsigned char>(s[i]); c < 0x80)
+        {
+            w += 1;
+            i += 1;
+        } else if ((c & 0xE0) == 0xC0)
+        {
+            w += 1;
+            i += 2;
+        } else if ((c & 0xF0) == 0xE0)
+        {
+            w += 2;
+            i += 3;
+        } else if ((c & 0xF8) == 0xF0)
+        {
+            w += 2;
+            i += 4;
+        } else
+        {
+            w += 1;
+            i += 1;
+        }
     }
     return w;
 }
@@ -105,8 +120,8 @@ char getLeftDecor(const int style)
     {
         case ChoiceStyle::AngleOutRNone:
         case ChoiceStyle::AngleOut: return '>';
-        case ChoiceStyle::AngleIn:  return '<';
-        case ChoiceStyle::Bracket:  return '[';
+        case ChoiceStyle::AngleIn: return '<';
+        case ChoiceStyle::Bracket: return '[';
         default: return '\0';
     }
 }
@@ -116,8 +131,8 @@ char getRightDecor(const int style)
     switch (decorOf(style))
     {
         case ChoiceStyle::AngleOut: return '<';
-        case ChoiceStyle::AngleIn:  return '>';
-        case ChoiceStyle::Bracket:  return ']';
+        case ChoiceStyle::AngleIn: return '>';
+        case ChoiceStyle::Bracket: return ']';
         case ChoiceStyle::AngleOutRNone:
         default: return '\0';
     }
@@ -130,7 +145,7 @@ std::string getIndent(const std::string& speaker)
 }
 
 
-const char* const ROMAN_SMALL[] =
+static const std::vector<std::string> ROMAN_SMALL =
 {
     "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"
 };
@@ -141,15 +156,14 @@ std::string toRoman(int n, const bool upper)
     if (n >= 1 && n <= 10)
     {
         s = ROMAN_SMALL[n];
-    }
-    else
+    } else
     {
-        static const std::pair<int, const char*> table[] = {
+        static const std::pair<int, const char *> table[] = {
             {1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
             {100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
             {10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, {1, "I"}
         };
-        for (const auto& [v, sym] : table)
+        for (const auto& [v, sym]: table)
             while (n >= v)
             {
                 s += sym;
@@ -157,7 +171,7 @@ std::string toRoman(int n, const bool upper)
             }
     }
     if (!upper)
-        for (char& c : s)
+        for (char& c: s)
             c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
     return s;
 }

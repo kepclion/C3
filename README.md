@@ -7,7 +7,7 @@
 - Windows（使用了 `windows.h`、`conio.h`、`shlobj.h`）
 - CMake 3.16+ 与 **C++20** 编译器（MinGW-w64 / MSVC 均可）
 
-> 本仓库的 `CMakeLists.txt` 已设为 `cmake_minimum_required(VERSION 3.16)` 与 `CMAKE_CXX_STANDARD 20`，可直接构建。**不要降到 C++17**：源码使用了 `std::set::contains`、缩写函数模板、指定初始化器，Obfuscate 使用了 `consteval`，均为 C++20 特性。
+> 注意：当前 `CMakeLists.txt` 写的是 `cmake_minimum_required(VERSION 4.3)` 和 `CMAKE_CXX_STANDARD 23`。若克隆后无法配置，请把版本号降至 `3.16`、标准降至 `20`。**不能降到 17**：源码使用了 `std::set::contains`、缩写函数模板、指定初始化器，Obfuscate 使用了 `consteval`，均为 C++20 特性。
 
 ## 第三方依赖（均为 header-only）
 
@@ -17,7 +17,7 @@
 | SimpleIni 4.27 | 读写 `config.ini` 存档 | MIT（`LICENCE.txt` 须一同保留） | `third_party/simpleini/SimpleIni.h` |
 | Obfuscate（Adam Yaxley 原版） | 编译期字符串混淆 | Unlicense（文件内自带声明） | `third_party/obfuscate.h` |
 
-源码中以 `<nlohmann/json.hpp>`、`<simpleini/SimpleIni.h>`、`<obfuscate.h>` 形式引用。注意下载的 SimpleIni 压缩包目录名为 `simpleini-master`，**必须重命名为 `simpleini`**，否则 include 路径不匹配。精简原则：nlohmann 的 `json.hpp` 并非单文件版，它依赖 `nlohmann/adl_serializer.hpp` 及 `nlohmann/detail/` 下的整套头文件，**必须保留完整的 `nlohmann/` 目录**；SimpleIni 只需 `SimpleIni.h` 与 `LICENCE.txt`，`tests/` 等测试文件无需提交；Obfuscate 只需 `obfuscate.h`（许可证声明内嵌于文件末尾）。
+源码中以 `<nlohmann/json.hpp>`、`<simpleini/SimpleIni.h>`、`<obfuscate.h>` 形式引用。注意下载的 SimpleIni 压缩包目录名为 `simpleini-master`，**必须重命名为 `simpleini`**，否则 include 路径不匹配。各库只需保留上表列出的头文件（外加 SimpleIni 的 `LICENCE.txt`）：nlohmann 的 `json.hpp` 是 amalgamated 单文件，`detail/` 等子目录可删；SimpleIni 的 `tests/` 等测试文件无需提交。
 
 克隆后需在 `CMakeLists.txt` 中加入：
 
@@ -25,7 +25,7 @@
 target_include_directories(C3 PRIVATE third_party)
 ```
 
-Obfuscate 上游地址：<https://github.com/adamyaxley/Obfuscate>（Unlicense，可自由使用与再分发）。该原版为`AY_OBFUSCATE`宏，我将其更名为了 `OBF(...)` ，可直接用于 `Secret.h`。
+Obfuscate 上游地址：<https://github.com/adamyaxley/Obfuscate>（Unlicense，可自由使用与再分发）。该原版定义了 `OBF(...)` 宏，可直接用于 `Secret.h`，无需改成 `AY_OBFUSCATE`。
 
 ## 构建与运行
 

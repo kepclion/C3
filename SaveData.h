@@ -6,7 +6,7 @@
 
 // 当前存档格式版本；每次字段含义/编码变更时 +1
 inline constexpr int kSaveVersion = 1;
-inline constexpr int kTaskCount = Count;
+inline constexpr int kTaskCount   = Count;
 
 struct PreludeProgress
 {
@@ -43,12 +43,9 @@ struct StoryProgress
     std::set<ull> readStories_;
 
     [[nodiscard]]
-    bool isStoryRead(const ull &id) const
-    {
-        return readStories_.contains(id);
-    }
+    bool isStoryRead(const ull& id) const { return readStories_.contains(id); }
 
-    void markStoryRead(const ull &id) { readStories_.insert(id); }
+    void markStoryRead(const ull& id) { readStories_.insert(id); }
 };
 
 struct MixProgress
@@ -62,6 +59,8 @@ struct MidEndProgress
     ull isMidEnd = 0;
 };
 
+
+
 struct SaveData
 {
     int version_ = kSaveVersion;
@@ -72,43 +71,51 @@ struct SaveData
     MixProgress mixProgress_;
     MidEndProgress midEndProgress_;
 
-    void Save(const std::string &path = "config.ini") const;
+    void Save(const std::string& path = "config.ini") const;
 
-    static SaveData Load(const std::string &path = "config.ini");
+    static SaveData Load(const std::string& path = "config.ini");
 };
 
 extern SaveData save;
 extern GameSurface SURFACE;
 
+
 struct Task
 {
     Tasks taskname;
-    std::string mail = "<grey>None</grey>";
+    std::string mail    = "<grey>None</grey>";
     std::string message = "<grey>None</grey>";
 
     void taskDone() const { save.taskProgress_.markTaskDone(taskname); }
 };
 
+
 // 游戏内虚构邮箱与任务，不代表真实个人或现实事件。
 inline const std::vector<Task> MailboxAndTask =
+{
     {
-        {
-            .taskname = GameCheat,
-            .mail = "kapacity@latte.loup",
-            .message = "1844-6744-0737-0955-1616",
-        },
-        {.taskname = DecodeZip,
-         .mail = "skewer@clydog.hsk",
-         .message = "Kepler"},
-        {.taskname = FindQQClue,
-         .mail = "loupmauvais@haki.tbh",
-         .message = "1227280205"},
-        {.taskname = DocumentFault,
-         .mail = "19114514@stu.eju.cod",
-         .message = "MATCH"},
-        {
-            .taskname = HeartKiller,
-            //.mail    =,
-            //.message  =
-        },
+        .taskname = GameCheat,
+        .mail     = "kapacity@latte.loup",
+        .message  = "1844-6744-0737-0955-1616",
+    },
+    {
+        .taskname = DecodeZip,
+        .mail     = "skewer@clydog.hsk",
+        .message  = "Kepler"
+    },
+    {
+        .taskname = FindQQClue,
+        .mail     = "loupmauvais@haki.tbh",
+        .message  = "1227280205"
+    },
+    {
+        .taskname = DocumentFault,
+        .mail     = "19114514@stu.eju.cod",
+        .message  = "MATCH"
+    },
+    {
+        .taskname = HeartKiller,
+        //.mail    =,
+        //.message  =
+    },
 };

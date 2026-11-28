@@ -26,8 +26,8 @@ int main()
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     if (GetConsoleScreenBufferInfo(hConsole, &csbi))
     {
-        const SHORT winW = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-        const SHORT winH = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+        const auto winW = static_cast<SHORT>(csbi.srWindow.Right - csbi.srWindow.Left + 1);
+        const auto winH = static_cast<SHORT>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
 
         if (winW < kMinCols || winH < kMinRows)
         {
