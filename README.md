@@ -97,7 +97,6 @@ objdump.exe -p C3.exe | findstr "DLL Name"
 ```text
 .
 ├── CMakeLists.txt        构建配置（含可选静态 CRT 开关）
-├── copy_deps.cmake       遗留辅助脚本（含本机绝对路径，未被 CMakeLists 引用）
 ├── main.cpp              程序入口
 ├── Game.cpp/.h           游戏主流程与界面
 ├── Story.cpp/.h          剧情加载与渲染
