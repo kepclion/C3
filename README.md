@@ -24,7 +24,7 @@
 - nlohmann/json 的 `json.hpp` 会包含 `nlohmann/detail/` 下的头文件，**必须保留完整的 `third_party/nlohmann/` 目录**，不要只保留 `json.hpp`。
 - `CMakeLists.txt` 已包含 `target_include_directories(C3 PRIVATE third_party)`，克隆后无需手动添加。
 
-Obfuscate 上游地址：<https://github.com/adamyaxley/Obfuscate>（Unlicense，可自由使用与再分发）。该原版定义了 `OBF(...)` 宏，可直接用于 `Secret.h`，无需改成 `AY_OBFUSCATE`。
+Obfuscate 上游地址：<https://github.com/adamyaxley/Obfuscate>（Unlicense，可自由使用与再分发）。为了方便，我将 `AY_OBFUSCATE` 的宏定义改成了 `OBF(...)`，可直接用于 `Secret.h`，。
 
 ## 构建
 
