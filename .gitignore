@@ -5,6 +5,7 @@
 # ---- 构建目录 ----
 cmake-build-*/
 build/
+build-*/
 out/
 
 # ---- 编译产物 ----

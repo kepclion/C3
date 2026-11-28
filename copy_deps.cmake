@@ -1,4 +1,6 @@
 # copy_deps.cmake
+# Legacy helper only. It is not referenced by CMakeLists.txt and contains a
+# machine-specific MinGW path. The MSVC /MT release does not need it.
 set(DEPS "")
 file(GET_RUNTIME_DEPENDENCIES
         EXECUTABLES "${SRC}"

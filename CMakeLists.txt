@@ -1,6 +1,15 @@
 cmake_minimum_required(VERSION 3.16)
 project(C3)
 
+# 可选：MSVC 下静态链接 C/C++ 运行库（Release=/MT，Debug=/MTd）。
+# 默认 OFF 保持原有 /MD 行为；发布免 Redistributable 版本时使用 -DC3_STATIC_MSVC_RUNTIME=ON。
+option(C3_STATIC_MSVC_RUNTIME "Statically link the MSVC runtime (/MT)" OFF)
+
+if(MSVC AND C3_STATIC_MSVC_RUNTIME)
+    # Debug 使用 MultiThreadedDebug，其他配置使用 MultiThreaded。
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
